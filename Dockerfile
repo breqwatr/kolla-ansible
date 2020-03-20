@@ -1,6 +1,9 @@
 FROM ubuntu:bionic
 
-# This image only works with ROCKY kolla images
+# Use the RELEASE environment variable to define which OpenStack release should
+# be supported
+
+ARG RELEASE
 
 # Why some packages are needed:
 # - apt: --no-install-recommends - omitted else kolla-ansible fails to install
@@ -28,7 +31,7 @@ RUN mkdir -p \
       python-openstackclient \
       python-neutronclient \
   && git clone \
-      --single-branch --branch stable/rocky \
+      --single-branch --branch stable/$RELEASE \
       https://github.com/openstack/kolla-ansible.git /var/repos/kolla-ansible \
   && pip install /var/repos/kolla-ansible
 
