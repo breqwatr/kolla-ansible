@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region ca-central-1)
-      - IMAGE_TAG="-$(date +%Y.%m.%d.%I.%M)"
+      - IMAGE_TAG="$RELEASE-$(date +%Y.%m.%d.%I.%M)"
   build:
     commands:
       - echo Build started on `date`
