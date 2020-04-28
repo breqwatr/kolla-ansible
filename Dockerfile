@@ -5,6 +5,8 @@ FROM ubuntu:bionic
 
 ARG RELEASE
 
+COPY build-files/ /
+
 # Why some packages are needed:
 # - apt: --no-install-recommends - omitted else kolla-ansible fails to install
 # - apt: python-subprocess32 - python-openstack wont install otherwise - https://github.com/google/python-subprocess32/issues/38
@@ -14,7 +16,6 @@ RUN mkdir -p \
       /etc/kolla \
   && apt-get update \
   && apt-get install -y \
-      ansible \
       git \
       iputils-ping \
       net-tools \
@@ -24,6 +25,8 @@ RUN mkdir -p \
       python-pip \
       python-setuptools \
       python-subprocess32 \
+  && which python \
+  && bash /install-ansible.sh \
   && rm -rf /var/lib/apt/lists/* \
   && python -m pip install --no-cache-dir \
       netaddr \

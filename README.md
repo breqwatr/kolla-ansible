@@ -18,3 +18,10 @@ RELEASE     (required)    Define the git branch that Kolla-Ansible will be
                           installed from. Supports: rocky,stein,train
 
 ```
+
+## image-files vs build-files
+
+The file(s) in build-files are needed for the `docker build` process itself.
+The images in `image-files` are used when operating the containers. If you
+deploy the `image-files` before the installation process begins, the install
+will fail.
