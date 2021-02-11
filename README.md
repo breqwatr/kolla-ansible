@@ -14,8 +14,8 @@ The Dockerfile uses a build-arg to define the release.
 
 ```
 
-RELEASE     (required)    Define the git branch that Kolla-Ansible will be
-                          installed from. Supports: rocky,stein,train
+RELEASE     (required)    Define the git branch that Kolla-Ansible will be installed from.
+                          Supports: rocky,stein,train,ussuri,victoria
 
 ```
 
