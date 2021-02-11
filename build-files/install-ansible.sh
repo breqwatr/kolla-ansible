@@ -13,7 +13,7 @@ fi
 
 supported="ussuri victoria"
 if [[ $(echo $supported | grep "$RELEASE") ]]; then
-  pip3 install ansible
+  pip3 install ansible==2.9
 else
   echo "ERROR: Unsupported environment var value for \$RELEASE: '$RELEASE'"
   echo "       Expected: $latest_ansible"
