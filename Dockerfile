@@ -34,7 +34,7 @@ RUN mkdir -p \
       python-openstackclient \
       python-neutronclient \
   && git clone \
-      --single-branch --branch stable/$RELEASE \
+      --single-branch --branch breqwatr/$RELEASE \
       https://github.com/breqwatr/kolla-ansible-fork.git /var/repos/kolla-ansible \
   && pip3 install /var/repos/kolla-ansible
 
