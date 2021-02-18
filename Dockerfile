@@ -35,7 +35,7 @@ RUN mkdir -p \
       python-neutronclient \
   && git clone \
       --single-branch --branch stable/$RELEASE \
-      https://github.com/openstack/kolla-ansible.git /var/repos/kolla-ansible \
+      https://github.com/breqwatr/kolla-ansible-fork.git /var/repos/kolla-ansible \
   && pip3 install /var/repos/kolla-ansible
 
 COPY image-files/ /
