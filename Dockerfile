@@ -1,4 +1,5 @@
-FROM ubuntu:bionic
+# Newer versions of KA need Python3, older Ubuntu's use Python2
+FROM ubuntu:focal
 
 # Use the RELEASE environment variable to define which OpenStack release should
 # be supported
@@ -20,15 +21,14 @@ RUN mkdir -p \
       iputils-ping \
       net-tools \
       openssh-client \
-      python2.7 \
       python-dev \
-      python-pip \
+      python3-pip \
       python-setuptools \
       python-subprocess32 \
   && which python \
   && bash /install-ansible.sh \
   && rm -rf /var/lib/apt/lists/* \
-  && python -m pip install --no-cache-dir \
+  && pip3 install --no-cache-dir \
       netaddr \
       pyOpenSSL \
       python-openstackclient \
@@ -36,6 +36,6 @@ RUN mkdir -p \
   && git clone \
       --single-branch --branch stable/$RELEASE \
       https://github.com/openstack/kolla-ansible.git /var/repos/kolla-ansible \
-  && pip install /var/repos/kolla-ansible
+  && pip3 install /var/repos/kolla-ansible
 
 COPY image-files/ /
